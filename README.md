@@ -18,7 +18,8 @@ The interface of this library is the same of the [QCryptographicHash](http://doc
 QByteArray stringHash = QCryptoHash::hash( "abc", QCryptoHash::TIGER );
 qInfo() << stringHash.toHex(); //f258c1e88414ab2a527ab541ffc5b8bf935f7b951c132951
 ~~~~~~~~~~~~~
-   
+
+### File Hash Calculation
 ~~~~~~~~~~~~~{.cpp}
 #include "qcryptohash.hpp"
 ...
