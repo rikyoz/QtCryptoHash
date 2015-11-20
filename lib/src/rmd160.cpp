@@ -34,6 +34,7 @@
 #include "bithelp.h"
 
 #include <cstdio>
+#include <cstring>
 #include <sys/stat.h>
 
 /*********************************

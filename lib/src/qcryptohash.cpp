@@ -28,13 +28,13 @@
 
 QCryptoHash::QCryptoHash( Algorithm method ) {
     switch ( method ) {
-        case Algorithm::TIGER:
+        case QCryptoHash::TIGER:
             hash_algorithm = new Tiger();
             break;
-        case Algorithm::RMD160:
+        case QCryptoHash::RMD160:
             hash_algorithm = new Rmd160();
             break;
-        case Algorithm::WHIRLPOOL:
+        case QCryptoHash::WHIRLPOOL:
             hash_algorithm = new Whirlpool();
             break;
         default:

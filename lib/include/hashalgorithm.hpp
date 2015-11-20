@@ -12,7 +12,11 @@
 #ifndef HASHALGORITHM_HPP
 #define HASHALGORITHM_HPP
 
+#if __cplusplus < 201103L
+#include <stdint.h>
+#else
 #include <cstdint>
+#endif
 
 typedef uint8_t	byte;
 

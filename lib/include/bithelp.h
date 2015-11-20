@@ -20,7 +20,11 @@
 #ifndef G10_BITHELP_H
 #define G10_BITHELP_H
 
+#if __cplusplus < 201103L
+#include <stdint.h>
+#else
 #include <cstdint>
+#endif
 
 /****************
  * Rotate the 32 bit unsigned integer X by N bits left/right
