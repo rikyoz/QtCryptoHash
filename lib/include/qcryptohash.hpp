@@ -18,12 +18,10 @@
 
 #ifdef STATIC_LIB
 #define LIBSHARED_EXPORT
-#else
-#ifdef LIB_LIBRARY
+#elif defined(LIB_LIBRARY)
 #define LIBSHARED_EXPORT Q_DECL_EXPORT
 #else
 #define LIBSHARED_EXPORT Q_DECL_IMPORT
-#endif
 #endif
 
 class HashAlgorithm;
