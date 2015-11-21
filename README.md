@@ -35,8 +35,8 @@ if ( file.open( QFile::ReadOnly ) ) {
 ~~~~~~~~~~~~~
 
 ## Supported Algorithms
-+ Tiger
-+ RIPEMD-160
++ Tiger-192
++ RipeMD-160
 + Whirlpool
 
 ## Dependencies
