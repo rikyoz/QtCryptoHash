@@ -79,6 +79,11 @@ static QMap<QByteArray, QByteArray> whirlpoolTests = {
         "abcdbcdecdefdefgefghfghighijhijk",
         "2a987ea40f917061f5d6f0a0e4644f488a7a5a52deee656207c562f988e95c69"
         "16bdc8031bc5be1b7b947639fe050b56939baaa0adff9ae6745b7b181c3be3fd"
+    },
+    {
+        "The quick brown fox jumps over the lazy dog",
+        "b97de512e91e3828b40d2b0fdce9ceb3c4a71f9bea8d88e75c4fa854df36725f"
+        "d2b52eb6544edcacd6f8beddfea403cb55ae31f03ad62a5ef54e42ee82c3fb35"
     }
 };
 
