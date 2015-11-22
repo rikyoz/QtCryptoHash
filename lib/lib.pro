@@ -41,7 +41,6 @@ VERSION = $${VER_MAJ}.$${VER_MIN}.$${VER_PAT}
 win32 {
     !static : !staticlib {
         CONFIG += dll
-        DLLDESTDIR = $${DESTDIR}
         TARGET_EXT = .dll
 
         # CONTENT OF THE RC FILE #
