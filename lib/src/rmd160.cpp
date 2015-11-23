@@ -152,7 +152,7 @@ Rmd160::Rmd160() {
 }
 
 Rmd160::~Rmd160() {
-    if( !context ) {
+    if ( !context ) {
         delete context;
         context = NULL;
     }
