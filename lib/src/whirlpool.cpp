@@ -852,12 +852,11 @@ void Whirlpool::processBuffer() {
     context->hash[7] ^= state[7] ^ block[7];
 }
 
-Whirlpool::Whirlpool() {
-    context = new WHIRLPOOL_CONTEXT;
-}
+Whirlpool::Whirlpool() : context( new WHIRLPOOL_CONTEXT ) {}
 
 Whirlpool::~Whirlpool() {
     delete context;
+    context = NULL;
 }
 
 /**

@@ -44,7 +44,7 @@ QCryptoHash::QCryptoHash( Algorithm method ) {
 }
 
 QCryptoHash::~QCryptoHash() {
-    if ( !hash_algorithm ) {
+    if ( hash_algorithm ) {
         delete hash_algorithm;
         hash_algorithm = NULL;
     }

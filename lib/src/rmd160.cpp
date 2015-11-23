@@ -147,15 +147,11 @@
  * 1 million times "a"   52783243c1697bdbe16d37f97f68f08325dc1528
  */
 
-Rmd160::Rmd160() {
-    context = new RMD160_CONTEXT;
-}
+Rmd160::Rmd160() : context( new RMD160_CONTEXT ) {}
 
 Rmd160::~Rmd160() {
-    if ( !context ) {
-        delete context;
-        context = NULL;
-    }
+    delete context;
+    context = NULL;
 }
 
 void Rmd160::burn_stack( int bytes ) {
