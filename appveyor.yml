@@ -59,6 +59,8 @@ build_script:
     - nmake debug
     - nmake release
     - cd ..
+    - echo "Build completed"
+    - echo "Packaging for platform " %platform% 
     - mkdir pkg
     - cd pkg
     - mkdir bin\%platform%\debug\
