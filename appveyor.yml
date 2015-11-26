@@ -18,39 +18,37 @@ environment:
   matrix:
   #MSVC x86
   - name: msvc2013-win32
-    platform: x86
+    arch: x86
     type: dynamic
     target: QtCryptoHash.dll
     qt_dir: C:\Qt\%qt_version%\msvc2013\bin
     
   #MSVC x86 STATIC
   - name: msvc2013-win32-static
-    platform: x86
+    arch: x86
     type: static
     target: QtCryptoHash.lib
     qt_dir: C:\Qt\%qt_version%\msvc2013\bin
     
   #MSVC x64
   - name: msvc2013-win64
-    platform: x64
+    arch: x64
     type: dynamic
     target: QtCryptoHash64.dll
     qt_dir: C:\Qt\%qt_version%\msvc2013_64\bin
     
   #MSVC x64 STATIC
   - name: msvc2013-win64-static
-    platform: x64
+    arch: x64
     type: static
     target: QtCryptoHash64.lib
     qt_dir: C:\Qt\%qt_version%\msvc2013_64\bin
 
 init:
     - set PATH=%PATH%;%msvc_dir%;%qt_dir%;
-    - vcvarsall.bat %platform%
+    - vcvarsall.bat %arch%
 
 build_script:
-    - '@echo off'
-    - echo Building %platform% %type%...
     - mkdir build
     - cd build
     - if [%type%]==[static] (
@@ -61,14 +59,12 @@ build_script:
     - nmake debug
     - nmake release
     - cd ..
-    - echo Build completed
-    - echo Packaging for platform %platform% 
     - mkdir pkg
     - cd pkg
-    - mkdir bin\%platform%\debug\
-    - mkdir bin\%platform%\release\
-    - copy /y ..\bin\%platform%\%type%\debug\%target% bin\%platform%\debug\%target%
-    - copy /y ..\bin\%platform%\%type%\release\%target% bin\%platform%\release\%target%
+    - mkdir bin\%arch%\debug\
+    - mkdir bin\%arch%\release\
+    - copy /y ..\bin\%arch%\%type%\debug\%target% bin\%arch%\debug\%target%
+    - copy /y ..\bin\%arch%\%type%\release\%target% bin\%arch%\release\%target%
     - copy /y ..\lib\include\qcryptohash.hpp qcryptohash.hpp
     - 7z a -t7z QtCryptoHash-v%qtcryptohash_version%-%name%.7z *
     
