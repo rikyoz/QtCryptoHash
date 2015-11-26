@@ -6,6 +6,7 @@ shallow_clone: true
 branches:
   only:
   - master
+  - develop
   
 configuration:
   - release
@@ -14,11 +15,13 @@ environment:
   qtcryptohash_version: 0.1.0
   qt_version: 5.5
   msvc_dir: C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC
+  mingw_dir: C:\Qt\Tools\mingw492_32
   
   matrix:
   #MSVC x86
   - name: msvc2013-win32
     arch: x86
+    compiler: msvc
     type: dynamic
     target: QtCryptoHash.dll
     qt_dir: C:\Qt\%qt_version%\msvc2013\bin
@@ -26,6 +29,7 @@ environment:
   #MSVC x86 STATIC
   - name: msvc2013-win32-static
     arch: x86
+    compiler: msvc
     type: static
     target: QtCryptoHash.lib
     qt_dir: C:\Qt\%qt_version%\msvc2013\bin
@@ -33,6 +37,7 @@ environment:
   #MSVC x64
   - name: msvc2013-win64
     arch: x64
+    compiler: msvc
     type: dynamic
     target: QtCryptoHash64.dll
     qt_dir: C:\Qt\%qt_version%\msvc2013_64\bin
@@ -40,13 +45,34 @@ environment:
   #MSVC x64 STATIC
   - name: msvc2013-win64-static
     arch: x64
+    compiler: msvc
     type: static
     target: QtCryptoHash64.lib
     qt_dir: C:\Qt\%qt_version%\msvc2013_64\bin
+    
+  #MinGW x86
+  - name: mingw49-win32
+    arch: x86
+    compiler: mingw
+    type: dynamic
+    target: QtCryptoHash.dll
+    qt_dir: C:\Qt\%qt_version%\mingw492_32\bin
+    
+  #MinGW x86 STATIC
+  - name: mingw49-win32-static
+    arch: x86
+    compiler: mingw
+    type: static
+    target: QtCryptoHash.lib
+    qt_dir: C:\Qt\%qt_version%\mingw492_32\bin
 
 init:
-    - set PATH=%PATH%;%msvc_dir%;%qt_dir%;
-    - vcvarsall.bat %arch%
+    - if [%compiler%]==[msvc] ( 
+        set PATH=%PATH%;%msvc_dir%;%qt_dir%;
+        vcvarsall.bat %arch%
+      ) else (
+        set PATH=%PATH%;%mingw_dir%;%qt_dir%;
+      )
 
 build_script:
     - mkdir build
@@ -56,8 +82,13 @@ build_script:
       ) else (
         qmake ..\QtCryptoHash.pro
       )
-    - nmake debug
-    - nmake release
+    - if [%compiler%]==[msvc] ( 
+        nmake debug
+        nmake release
+      ) else (
+        mingw32-make debug
+        mingw32-make release
+      )
     - cd ..
     - mkdir pkg
     - cd pkg
