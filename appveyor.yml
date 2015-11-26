@@ -6,7 +6,6 @@ shallow_clone: true
 branches:
   only:
   - master
-  - develop
   
 configuration:
   - release
