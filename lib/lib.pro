@@ -23,9 +23,6 @@ HEADERS += \
            include/qcryptohash.hpp
 
 ########################### CONFIGURATION ############################
-# Uncomment the following line to compile QtCrypotHash as static library!
-# CONFIG += staticlib
-
 static | staticlib {
     DEFINES += STATIC_LIB
 } else {
