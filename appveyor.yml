@@ -68,8 +68,7 @@ environment:
 
 init:
     - if [%compiler%]==[msvc] ( 
-        set "PATH=%PATH%;%msvc_dir%;%qt_dir%;"
-        vcvarsall.bat %arch%
+        set "PATH=%PATH%;%msvc_dir%;%qt_dir%;" & vcvarsall.bat %arch%
       ) else (
         set "PATH=%PATH%;%mingw_dir%;%qt_dir%;"
       )
