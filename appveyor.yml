@@ -67,12 +67,12 @@ environment:
     qt_dir: C:\Qt\%qt_version%\mingw492_32\bin
 
 init:
-    - if [%compiler%]==[msvc] ( 
-        set "PATH=%PATH%;%msvc_dir%;%qt_dir%"
-      ) else (
-        set "PATH=%PATH%;%mingw_dir%;%qt_dir%"
-      )
-    - if [%compiler%]==[msvc] vcvarsall.bat %arch%
+    - if [%compiler%]==[msvc]
+        set PATH=%PATH%;%msvc_dir%;%qt_dir%
+    - if [%compiler%]==[mingw]
+        set PATH=%PATH%;%mingw_dir%;%qt_dir%
+    - if [%compiler%]==[msvc]
+        vcvarsall.bat %arch%
 
 build_script:
     - mkdir build
