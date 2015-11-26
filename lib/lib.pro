@@ -23,10 +23,8 @@ HEADERS += \
            include/qcryptohash.hpp
 
 ########################### CONFIGURATION ############################
-static | staticlib {
-    DEFINES += STATIC_LIB
-} else {
-    DEFINES += LIB_LIBRARY
+!static {
+    DEFINES += QTCRYPTOHASH_EXPORT
 }
 
 VER_MAJ = 0

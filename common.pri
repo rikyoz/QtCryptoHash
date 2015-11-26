@@ -15,6 +15,7 @@ CONFIG(debug, debug|release) {
 }
 
 static {
+    DEFINES += QTCRYPTOHASH_STATIC
     DESTDIR  = $$PWD/bin/$${PLATFORM}/static/$${BUILD}
 } else {
     DESTDIR  = $$PWD/bin/$${PLATFORM}/dynamic/$${BUILD}
