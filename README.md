@@ -1,4 +1,4 @@
-# QtCryptoHash <img src="https://ci.appveyor.com/api/projects/status/v32al0rfvv1udgl5?svg=true&passingText=Build%20OK&pendingText=Building...&failingText=Build%20Failed" />
+# QtCryptoHash [![Build Status](https://ci.appveyor.com/api/projects/status/v32al0rfvv1udgl5?svg=true&passingText=build%20OK&pendingText=building...&failingText=build%20failed)](https://ci.appveyor.com/project/rikyoz/qtcryptohash)
 
 **QtCryptoHash** is a Qt C++ library providing a way to calculate some cryptographic hashes not supported by the *QCryptographicHash* class of the Qt library.
 
