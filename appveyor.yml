@@ -63,7 +63,7 @@ environment:
     arch: x86
     compiler: mingw
     type: static
-    target: QtCryptoHash.lib
+    target: libQtCryptoHash.a
     qt_dir: C:\Qt\%qt_version%\mingw492_32\bin
 
 init:
