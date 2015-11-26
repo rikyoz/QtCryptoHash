@@ -49,6 +49,8 @@ init:
     - vcvarsall.bat %platform%
 
 build_script:
+    - @echo off
+    - echo Building %platform% %type%...
     - mkdir build
     - cd build
     - if [%type%]==[static] (
@@ -59,8 +61,8 @@ build_script:
     - nmake debug
     - nmake release
     - cd ..
-    - echo "Build completed"
-    - echo "Packaging for platform " %platform% 
+    - echo Build completed
+    - echo Packaging for platform %platform% 
     - mkdir pkg
     - cd pkg
     - mkdir bin\%platform%\debug\
