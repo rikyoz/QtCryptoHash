@@ -51,7 +51,11 @@ init:
 build_script:
     - mkdir build
     - cd build
-    - qmake ..\QtCryptoHash.pro "CONFIG += static"
+    - if [%type%]==[static] (
+        qmake ..\QtCryptoHash.pro "CONFIG += static"
+      ) else (
+        qmake ..\QtCryptoHash.pro
+      )
     - nmake debug
     - nmake release
     - cd ..
@@ -65,7 +69,7 @@ build_script:
     - 7z a -t7z QtCryptoHash-v%qtcryptohash_version%-%name%.7z *
     
 artifacts:
-    - path: bin\**\*.7z
+    - path: pkg\**\*.7z
       name: binary
 
 test: off
