@@ -22,7 +22,7 @@ environment:
     type: dynamic
     target: QtCryptoHash.dll
     qt_dir: C:\Qt\%qt_version%\msvc2013\bin
-	
+    
   #MSVC x86 STATIC
   - name: msvc2013-win32-static
     platform: x86
