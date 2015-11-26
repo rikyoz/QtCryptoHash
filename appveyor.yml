@@ -69,7 +69,7 @@ environment:
 init:
     - set PATH=%PATH%;%msvc_dir%;%mingw_dir%;%qt_dir%
     - if [%compiler%]==[msvc]
-        vcvarsall.bat %arch%
+        call vcvarsall.bat %arch%
 
 build_script:
     - mkdir build
