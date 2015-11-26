@@ -49,7 +49,7 @@ init:
     - vcvarsall.bat %platform%
 
 build_script:
-    - @echo off
+    - '@echo off'
     - echo Building %platform% %type%...
     - mkdir build
     - cd build
