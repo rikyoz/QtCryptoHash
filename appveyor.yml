@@ -101,8 +101,8 @@ test: off
 
 deploy:
     provider: GitHub
-    release: QtCryptoHash v%qtcryptohash_version%
-    description: ''
+    release: $(APPVEYOR_REPO_TAG_NAME)
+    description: 'Binaries of QtCryptoHash v%qtcryptohash_version%'
     auth_token:
       secure: 4V5xJQT+iVPUhK05TBLkNkLY8HTArZ+omH394hfXqQuxfrkaQqnR8132rDnB/HVm
     artifact: /.*\.7z/
