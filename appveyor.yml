@@ -80,11 +80,9 @@ build_script:
         qmake ..\QtCryptoHash.pro
       )
     - if [%compiler%]==[msvc] ( 
-        nmake debug
-        nmake release
+        nmake debug & nmake release
       ) else (
-        mingw32-make debug
-        mingw32-make release
+        mingw32-make debug & mingw32-make release
       )
     - cd ..
     - mkdir pkg
