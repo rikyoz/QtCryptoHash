@@ -1,0 +1,84 @@
+version: 0.1.0-build{build}
+#skip_non_tags: true
+os: Windows Server 2012 R2
+shallow_clone: true
+
+branches:
+  only:
+  - master
+  
+configuration:
+  - release
+
+environment:
+  qtcryptohash_version: 0.1.0
+  qt_version: 5.5
+  msvc_dir: C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC
+  
+  matrix:
+  #MSVC x86
+  - name: msvc2013-win32
+    platform: x86
+    type: dynamic
+    target: QtCryptoHash.dll
+    qt_dir: C:\Qt\%qt_version%\msvc2013\bin
+	
+  #MSVC x86 STATIC
+  - name: msvc2013-win32-static
+    platform: x86
+    type: static
+    target: QtCryptoHash.lib
+    qt_dir: C:\Qt\%qt_version%\msvc2013\bin
+    
+  #MSVC x64
+  - name: msvc2013-win64
+    platform: x64
+    type: dynamic
+    target: QtCryptoHash64.dll
+    qt_dir: C:\Qt\%qt_version%\msvc2013_64\bin
+    
+  #MSVC x64 STATIC
+  - name: msvc2013-win64-static
+    platform: x64
+    type: static
+    target: QtCryptoHash64.lib
+    qt_dir: C:\Qt\%qt_version%\msvc2013_64\bin
+
+init:
+    - set PATH=%PATH%;%msvc_dir%;%qt_dir%;
+    - vcvarsall.bat %platform%
+
+build_script:
+    - mkdir build
+    - cd build
+    - qmake ..\QtCryptoHash.pro "CONFIG += static"
+    - nmake debug
+    - nmake release
+    - cd ..
+    - mkdir pkg
+    - cd pkg
+    - mkdir bin\%platform%\debug\
+    - mkdir bin\%platform%\release\
+    - copy /y ..\bin\%platform%\%type%\debug\%target% bin\%platform%\debug\%target%
+    - copy /y ..\bin\%platform%\%type%\release\%target% bin\%platform%\release\%target%
+    - copy /y ..\lib\include\qcryptohash.hpp qcryptohash.hpp
+    - 7z a -t7z QtCryptoHash-v%qtcryptohash_version%-%name%.7z *
+    
+artifacts:
+    - path: bin\**\*.7z
+      name: binary
+
+test: off
+
+deploy:
+    provider: GitHub
+    release: QtCryptoHash v%qtcryptohash_version%
+    description: ''
+    auth_token:
+      secure: 4V5xJQT+iVPUhK05TBLkNkLY8HTArZ+omH394hfXqQuxfrkaQqnR8132rDnB/HVm
+    artifact: /.*\.7z/
+    draft: true
+    prerelease: false
+    on:
+      branch: master
+      appveyor_repo_tag: true
