@@ -29,12 +29,12 @@ qInfo() << stringHash.toHex(); //f258c1e88414ab2a527ab541ffc5b8bf935f7b951c13295
 ...
 QFile file( filename );
 if ( file.open( QFile::ReadOnly ) ) {
-	QCryptoHash cryptoHash( QCryptoHash::RMD160 );
+	QCryptoHash ripemdHash( QCryptoHash::RMD160 );
 	while( !file.atEnd() ){
-		cryptoHash.addData( file.read( 8192 ) );
+		ripemdHash.addData( file.read( 8192 ) );
 	}
-	QByteArray fileHash = cryptoHash.result();	
-	qInfo() << fileHash.toHex(); //hash of 'filename' file content
+	QByteArray fileHash = ripemdHash.result();	
+	qInfo() << fileHash.toHex(); //RipeMD hash of 'filename' file content
 }
 ```
 
