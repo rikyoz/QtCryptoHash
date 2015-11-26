@@ -68,7 +68,7 @@ environment:
 
 init:
     - if [%compiler%]==[msvc] ( 
-        set PATH=%PATH%;%msvc_dir%;%qt_dir%
+        set "PATH=%PATH%;%msvc_dir%;%qt_dir%"
       ) else (
         set "PATH=%PATH%;%mingw_dir%;%qt_dir%"
       )
