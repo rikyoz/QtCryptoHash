@@ -5,7 +5,7 @@
 
 #include "qcryptohash.hpp"
 
-static QMap<QByteArray, QByteArray> tigerTests = {
+static const QMap<QByteArray, QByteArray> tigerTests = {
     {"", "24f0130c63ac933216166e76b1bb925ff373de2d49584e7a"},
     {"abc", "f258c1e88414ab2a527ab541ffc5b8bf935f7b951c132951"},
     {"Tiger", "9f00f599072300dd276abb38c8eb6dec37790c116f9d2bdf"},
@@ -21,7 +21,7 @@ static QMap<QByteArray, QByteArray> tigerTests = {
     }
 };
 
-static QMap<QByteArray, QByteArray> ripemdTests = {
+static const QMap<QByteArray, QByteArray> ripemdTests = {
     {"", "9c1185a5c5e9fc54612808977ee8f548b2258d31"},
     {"a", "0bdc9d2d256b3ee9daae347be6f4dc835a467ffe"},
     {"abc", "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc"},
@@ -43,7 +43,7 @@ static QMap<QByteArray, QByteArray> ripemdTests = {
     }
 };
 
-static QMap<QByteArray, QByteArray> whirlpoolTests = {
+static const QMap<QByteArray, QByteArray> whirlpoolTests = {
     {
         "", "19fa61d75522a4669b44e39c1d2e1726c530232130d407f89afee0964997f7a73e"
         "83be698b288febcf88e3e03c4f0757ea8964e59b63d93708b138cc42a66eb3"

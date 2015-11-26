@@ -44,7 +44,7 @@ QCryptoHash::QCryptoHash( Algorithm method ) {
 }
 
 QCryptoHash::~QCryptoHash() {
-    if ( !hash_algorithm ) {
+    if ( hash_algorithm ) {
         delete hash_algorithm;
         hash_algorithm = NULL;
     }
@@ -77,7 +77,7 @@ bool QCryptoHash::addData( QIODevice* device ) {
 
 QByteArray QCryptoHash::result() const {
     byte* hash_array = hash_algorithm->final();
-    return QByteArray( reinterpret_cast<char*>( hash_array ), hash_algorithm->hash_length() );
+    return QByteArray( reinterpret_cast< char* >( hash_array ), hash_algorithm->hash_length() );
 }
 
 QByteArray QCryptoHash::hash( const QByteArray &data, QCryptoHash::Algorithm method ) {

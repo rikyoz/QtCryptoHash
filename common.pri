@@ -1,3 +1,6 @@
+# Uncomment the following line to compile QtCrypotHash as static library!
+# CONFIG += static
+
 contains(QT_ARCH, i386) {
     PLATFORM = x86
 } else {
@@ -11,4 +14,9 @@ CONFIG(debug, debug|release) {
     BUILD = release
 }
 
-DESTDIR = $$PWD/bin/$${PLATFORM}/$${BUILD}
+static {
+    DEFINES += QTCRYPTOHASH_STATIC
+    DESTDIR  = $$PWD/bin/$${PLATFORM}/static/$${BUILD}
+} else {
+    DESTDIR  = $$PWD/bin/$${PLATFORM}/dynamic/$${BUILD}
+}

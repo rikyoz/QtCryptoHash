@@ -1,4 +1,4 @@
-# QtCryptoHash
+# QtCryptoHash [![Build Status](https://ci.appveyor.com/api/projects/status/v32al0rfvv1udgl5?svg=true&passingText=build%20OK&pendingText=building...&failingText=build%20failed)](https://ci.appveyor.com/project/rikyoz/qtcryptohash)
 
 **QtCryptoHash** is a Qt C++ library providing a way to calculate some cryptographic hashes not supported by the *QCryptographicHash* class of the Qt library.
 
@@ -29,12 +29,12 @@ qInfo() << stringHash.toHex(); //f258c1e88414ab2a527ab541ffc5b8bf935f7b951c13295
 ...
 QFile file( filename );
 if ( file.open( QFile::ReadOnly ) ) {
-	QCryptoHash cryptoHash( QCryptoHash::RMD160 );
+	QCryptoHash ripemdHash( QCryptoHash::RMD160 );
 	while( !file.atEnd() ){
-		cryptoHash.addData( file.read( 8192 ) );
+		ripemdHash.addData( file.read( 8192 ) );
 	}
-	QByteArray fileHash = cryptoHash.result();	
-	qInfo() << fileHash.toHex(); //hash of 'filename' file content
+	QByteArray fileHash = ripemdHash.result();	
+	qInfo() << fileHash.toHex(); //RipeMD hash of 'filename' file content
 }
 ```
 
