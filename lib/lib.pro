@@ -29,7 +29,7 @@ HEADERS += \
 
 VER_MAJ = 0
 VER_MIN = 1
-VER_PAT = 0
+VER_PAT = 1
 VERSION = $${VER_MAJ}.$${VER_MIN}.$${VER_PAT}
 
 ######################## OS DEPENDENT OPTIONS ########################
@@ -41,7 +41,7 @@ win32 {
         # CONTENT OF THE RC FILE #
         QMAKE_TARGET_PRODUCT = QtCryptoHash
         QMAKE_TARGET_COMPANY = rikyoz
-        QMAKE_TARGET_COPYRIGHT = Copyright (c) 2015 $${QMAKE_TARGET_COMPANY}
+        QMAKE_TARGET_COPYRIGHT = Copyright (c) 2016 $${QMAKE_TARGET_COMPANY}
     }
 
     !win32-g++ {
