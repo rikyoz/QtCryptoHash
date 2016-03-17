@@ -1,9 +1,9 @@
 # QtCryptoHash [![Build Status](https://ci.appveyor.com/api/projects/status/bg4it7o8d5chbfvm?svg=true&passingText=build%20OK&pendingText=building...&failingText=build%20failed)](https://ci.appveyor.com/project/rikyoz/qtcryptohash)
 
-**QtCryptoHash** is a Qt C++ library providing a way to calculate some cryptographic hashes not supported by the *QCryptographicHash* class of the Qt library.
+**QtCryptoHash** is a Qt C++ library providing a way to calculate some of the cryptographic hashes not supported by the *QCryptographicHash* class from the Qt library.
 
 [![](http://img.shields.io/badge/version-v0.1.0-blue.png?style=flat)](https://github.com/rikyoz/qtcryptohash/releases/latest)
-![](https://img.shields.io/badge/platform-Windows%20|%20Linux%20|%20Mac%20OS%20X-red.png?style=flat)
+![](http://img.shields.io/badge/compiler-MSVC%20|%20MinGW%20|%20GCC%20|%20Clang-red.png?style=flat)
 ![](http://img.shields.io/badge/architecture-x86%20|%20x64-yellow.png?style=flat)
 [![](http://img.shields.io/badge/license-GNU%20GPL%20v2-lightgrey.png?style=flat)](/LICENSE)
 
