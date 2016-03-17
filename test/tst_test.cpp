@@ -87,6 +87,10 @@ static const QMap<QByteArray, QByteArray> whirlpoolTests = {
     }
 };
 
+const std::string error_message( unsigned int test_number ) {
+    return QString( "Failed Test %1" ).arg( test_number ).toStdString();
+}
+
 class Test : public QObject {
         Q_OBJECT
 
@@ -123,12 +127,11 @@ void Test::testWhirlpoolHash() {
 }
 
 void Test::genericHashTest( const QMap<QByteArray, QByteArray> &tests, QCryptoHash::Algorithm method ) {
-    int current_test = 1;
+    unsigned int current_test = 1;
     auto it_end = tests.cend();
     for ( auto it_start = tests.cbegin(); it_start != it_end; ++it_start ) {
         QByteArray hash = QCryptoHash::hash( it_start.key(), method ).toHex();
-        auto error_message = QString( "Failed Test %1" ).arg( current_test ).toStdString();
-        QVERIFY2( hash == it_start.value(), error_message.c_str() );
+        QVERIFY2( hash == it_start.value(), error_message( current_test ).c_str() );
         ++current_test;
     }
 }
