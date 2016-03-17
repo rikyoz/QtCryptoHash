@@ -941,7 +941,7 @@ void Whirlpool::write( const byte* source, int sourceBits ) {
         sourceBits -= 8 - bufferRem;
         /* now 0 <= sourceBits < 8;
            furthermore, all data (if any is left) is in source[sourcePos].*/
-        if ( bufferBits == WHIRLPOOL_DIGEST_SIZE ) {
+        if ( bufferBits == WHIRLPOOL_DIGEST_BITSIZE ) {
             // process data block:
             processBuffer();
             // reset buffer:
