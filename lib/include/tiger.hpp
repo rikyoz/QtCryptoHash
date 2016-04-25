@@ -40,7 +40,7 @@ class Tiger : public HashAlgorithm {
         void write( const byte* inbuf, int inlen ) Q_DECL_OVERRIDE;
         byte* final() Q_DECL_OVERRIDE;
 
-        unsigned int hash_length() const Q_DECL_OVERRIDE { return TIGER_HASHLEN_BYTE; }
+        int hash_length() const Q_DECL_OVERRIDE { return TIGER_HASHLEN_BYTE; }
 
     protected:
         TIGER_CONTEXT* context;

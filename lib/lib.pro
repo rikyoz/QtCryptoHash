@@ -13,7 +13,8 @@ SOURCES += \
            src/rmd160.cpp \
            src/tiger.cpp \
            src/whirlpool.cpp \
-           src/qcryptohash.cpp
+           src/qcryptohash.cpp \
+           src/hashalgorithm.cpp
 
 HEADERS += \
            include/rmd160.hpp \

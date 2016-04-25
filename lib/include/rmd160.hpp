@@ -37,7 +37,7 @@ class Rmd160 : public HashAlgorithm {
         void write( const byte* inbuf, int inlen ) Q_DECL_OVERRIDE;
         byte* final() Q_DECL_OVERRIDE;
 
-        unsigned int hash_length() const Q_DECL_OVERRIDE { return RMD160_HASHLEN_BYTE; }
+        int hash_length() const Q_DECL_OVERRIDE { return RMD160_HASHLEN_BYTE; }
 
     protected:
         RMD160_CONTEXT* context;

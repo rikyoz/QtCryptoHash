@@ -42,7 +42,7 @@ class Whirlpool : public HashAlgorithm {
         void write( const byte* data, int length ) Q_DECL_OVERRIDE;
         byte* final() Q_DECL_OVERRIDE;
 
-        unsigned int hash_length() const Q_DECL_OVERRIDE { return WHIRLPOOL_DIGEST_SIZE; }
+        int hash_length() const Q_DECL_OVERRIDE { return WHIRLPOOL_DIGEST_SIZE; }
 
     protected:
         WHIRLPOOL_CONTEXT* context;
