@@ -91,11 +91,11 @@ const std::string error_message( unsigned int test_number ) {
     return QString( "Failed Test %1" ).arg( test_number ).toStdString();
 }
 
-class Test : public QObject {
+class tst_QCryptoHash : public QObject {
         Q_OBJECT
 
     public:
-        Test();
+        tst_QCryptoHash();
 
     private Q_SLOTS:
         void initTestCase();
@@ -108,25 +108,25 @@ class Test : public QObject {
         void genericHashTest( const QMap<QByteArray, QByteArray> &tests, QCryptoHash::Algorithm method );
 };
 
-Test::Test() {}
+tst_QCryptoHash::tst_QCryptoHash() {}
 
-void Test::initTestCase() {}
+void tst_QCryptoHash::initTestCase() {}
 
-void Test::cleanupTestCase() {}
+void tst_QCryptoHash::cleanupTestCase() {}
 
-void Test::testTigerHash() {
+void tst_QCryptoHash::testTigerHash() {
     genericHashTest( tigerTests, QCryptoHash::TIGER );
 }
 
-void Test::testRipeMDHash() {
+void tst_QCryptoHash::testRipeMDHash() {
     genericHashTest( ripemdTests, QCryptoHash::RMD160 );
 }
 
-void Test::testWhirlpoolHash() {
+void tst_QCryptoHash::testWhirlpoolHash() {
     genericHashTest( whirlpoolTests, QCryptoHash::WHIRLPOOL );
 }
 
-void Test::genericHashTest( const QMap<QByteArray, QByteArray> &tests, QCryptoHash::Algorithm method ) {
+void tst_QCryptoHash::genericHashTest( const QMap<QByteArray, QByteArray> &tests, QCryptoHash::Algorithm method ) {
     unsigned int current_test = 1;
     auto it_end = tests.cend();
     for ( auto it_start = tests.cbegin(); it_start != it_end; ++it_start ) {
@@ -136,6 +136,6 @@ void Test::genericHashTest( const QMap<QByteArray, QByteArray> &tests, QCryptoHa
     }
 }
 
-QTEST_APPLESS_MAIN( Test )
+QTEST_APPLESS_MAIN( tst_QCryptoHash )
 
-#include "tst_test.moc"
+#include "tst_qcryptohash.moc"
