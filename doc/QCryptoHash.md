@@ -47,7 +47,7 @@ The Algorithm enum specifies the hashing algorithms supported by QCryptoHash.
 
 ## Member Function Documentation
 
-####  [QCryptoHash](./QCryptoHash)::[QCryptoHash](./QCryptoHash)( [Algorithm](./[QCryptoHash](./QCryptoHash)) method )
+####  [QCryptoHash](./QCryptoHash)::[QCryptoHash](./QCryptoHash)( [Algorithm](./QCryptoHash) method )
 Constructs an object that can be used to create a cryptographic hash from data using *method*.
 
 <br/>
@@ -77,7 +77,7 @@ Returns true if reading was successful.
 Returns the final hash value. 
 
 <br/>
-#### [static] <a href="https://doc.qt.io/qt-5/qbytearray.html" target="_blank">QByteArray</a> [QCryptoHash](./QCryptoHash)::hash( const <a href="https://doc.qt.io/qt-5/qbytearray.html" target="_blank">QByteArray</a> &data, [Algorithm](./[QCryptoHash](./QCryptoHash)) method )
+#### [static] <a href="https://doc.qt.io/qt-5/qbytearray.html" target="_blank">QByteArray</a> [QCryptoHash](./QCryptoHash)::hash( const <a href="https://doc.qt.io/qt-5/qbytearray.html" target="_blank">QByteArray</a> &data, [Algorithm](./QCryptoHash) method )
 Returns the hash of *data* using *method*. 
 
 <br/>
