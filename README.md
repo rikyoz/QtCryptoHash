@@ -9,7 +9,7 @@
 
 ## Features
 + Supports **Tiger-192**, **RipeMD-160** and **Whirlpool** algorithms
-+ Simple interface, identical to the <a href="doc.qt.io/qt-5/qcryptographichash.html" target="_blank">QCryptographicHash</a> class, but renamed [**QCryptoHash**](https://github.com/rikyoz/QtCryptoHash/wiki/QCryptoHash)
++ Simple interface, identical to the <a href="http://doc.qt.io/qt-5/qcryptographichash.html" target="_blank">QCryptographicHash</a> class, but renamed [**QCryptoHash**](https://github.com/rikyoz/QtCryptoHash/wiki/QCryptoHash)
 + Works with **Qt 5.x**
 + Supports **MSVC**, **MinGW**, **GCC** and **Clang**
 
