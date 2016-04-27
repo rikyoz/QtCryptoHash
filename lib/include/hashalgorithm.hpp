@@ -31,4 +31,3 @@ class HashAlgorithm {
 };
 
 #endif // HASHALGORITHM_HPP
-

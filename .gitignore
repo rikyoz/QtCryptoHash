@@ -74,3 +74,5 @@ Thumbs.db
 *.dll
 *.exe
 *.7z
+doc/Doxyfile
+doc/xml/
