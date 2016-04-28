@@ -55,7 +55,7 @@ environment:
     compiler: mingw
     type: dynamic
     target: QtCryptoHash.dll
-    qt_dir: C:\Qt\%qt_version%\mingw492_32\bin
+    qt_dir: C:\Qt\%qt_version%\mingw49_32\bin
     
   #MinGW x86 STATIC
   - name: mingw49-win32-static
@@ -63,7 +63,7 @@ environment:
     compiler: mingw
     type: static
     target: libQtCryptoHash.a
-    qt_dir: C:\Qt\%qt_version%\mingw492_32\bin
+    qt_dir: C:\Qt\%qt_version%\mingw49_32\bin
 
 init:
     - set PATH=%PATH%;%msvc_dir%;%mingw_dir%;%qt_dir%
