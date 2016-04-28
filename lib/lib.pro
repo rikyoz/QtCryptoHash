@@ -13,7 +13,8 @@ SOURCES += \
            src/rmd160.cpp \
            src/tiger.cpp \
            src/whirlpool.cpp \
-           src/qcryptohash.cpp
+           src/qcryptohash.cpp \
+           src/hashalgorithm.cpp
 
 HEADERS += \
            include/rmd160.hpp \
@@ -29,7 +30,7 @@ HEADERS += \
 
 VER_MAJ = 0
 VER_MIN = 1
-VER_PAT = 1
+VER_PAT = 2
 VERSION = $${VER_MAJ}.$${VER_MIN}.$${VER_PAT}
 
 ######################## OS DEPENDENT OPTIONS ########################

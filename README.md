@@ -2,14 +2,14 @@
 
 **QtCryptoHash** is a Qt C++ library providing a way to calculate some of the cryptographic hashes not supported by the *QCryptographicHash* class from the Qt library.
 
-[![](http://img.shields.io/badge/version-v0.1.1-blue.png?style=flat)](https://github.com/rikyoz/qtcryptohash/releases/latest)
+[![](http://img.shields.io/badge/version-v0.1.2-blue.png?style=flat)](https://github.com/rikyoz/qtcryptohash/releases/latest)
 ![](http://img.shields.io/badge/compiler-MSVC%20|%20MinGW%20|%20GCC%20|%20Clang-red.png?style=flat)
 ![](http://img.shields.io/badge/architecture-x86%20|%20x64-yellow.png?style=flat)
 [![](http://img.shields.io/badge/license-GNU%20GPL%20v2-lightgrey.png?style=flat)](/LICENSE)
 
 ## Features
 + Supports **Tiger-192**, **RipeMD-160** and **Whirlpool** algorithms
-+ Simple interface, identical to the [QCryptographicHash](http://doc.qt.io/qt-5/qcryptographichash.html) class, but renamed [**QCryptoHash**](https://github.com/rikyoz/QtCryptoHash/wiki/API)
++ Simple interface, identical to the <a href="http://doc.qt.io/qt-5/qcryptographichash.html" target="_blank">QCryptographicHash</a> class, but renamed [**QCryptoHash**](https://github.com/rikyoz/QtCryptoHash/wiki/QCryptoHash)
 + Works with **Qt 5.x**
 + Supports **MSVC**, **MinGW**, **GCC** and **Clang**
 
@@ -38,7 +38,7 @@ if ( file.open( QFile::ReadOnly ) ) {
 }
 ```
 
-For a complete description of the QCryptoHash API, see the relative [wiki](https://github.com/rikyoz/QtCryptoHash/wiki/QCryptoHash-class).
+For a complete description of the QCryptoHash API, see the relative [wiki](https://github.com/rikyoz/QtCryptoHash/wiki/QCryptoHash).
 
 ## Dependencies
 QtCryptoHash needs only **QtCore** library to be linked to the program.

@@ -37,8 +37,6 @@ QCryptoHash::QCryptoHash( Algorithm method ) {
         case QCryptoHash::WHIRLPOOL:
             hash_algorithm = new Whirlpool();
             break;
-        default:
-            throw std::invalid_argument( "Algorithm not supported" );
     }
     reset();
 }
@@ -63,14 +61,16 @@ void QCryptoHash::addData( const QByteArray &data ) {
 }
 
 bool QCryptoHash::addData( QIODevice* device ) {
-    if ( !device->isReadable() || !device->isOpen() )
+    if ( !device->isReadable() || !device->isOpen() ) {
         return false;
+    }
 
     char buffer[1024];
     int length;
 
-    while ( ( length = device->read( buffer, sizeof( buffer ) ) ) > 0 )
+    while ( ( length = device->read( buffer, sizeof( buffer ) ) ) > 0 ) {
         addData( buffer, length );
+    }
 
     return device->atEnd();
 }

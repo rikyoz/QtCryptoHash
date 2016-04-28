@@ -18,20 +18,16 @@
 #include <cstdint>
 #endif
 
-typedef uint8_t	byte;
+typedef uint8_t byte;
 
 class HashAlgorithm {
     public:
-        virtual ~HashAlgorithm() {}
+        virtual ~HashAlgorithm();
 
         virtual void init() = 0;
         virtual void write( const byte* inbuf, int inlen ) = 0;
         virtual byte* final() = 0;
-        virtual unsigned int hash_length() const = 0;
-
-    protected:
-        HashAlgorithm() {}
-
+        virtual int hash_length() const = 0;
 };
 
 #endif // HASHALGORITHM_HPP
