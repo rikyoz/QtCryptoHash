@@ -38,7 +38,7 @@ if ( file.open( QFile::ReadOnly ) ) {
 }
 ```
 
-For a complete description of the QCryptoHash API, see the relative [wiki](https://github.com/rikyoz/QtCryptoHash/wiki/QCryptoHash-class).
+For a complete description of the QCryptoHash API, see the relative [wiki](https://github.com/rikyoz/QtCryptoHash/wiki/QCryptoHash).
 
 ## Dependencies
 QtCryptoHash needs only **QtCore** library to be linked to the program.
