@@ -35,6 +35,8 @@ VERSION = $${VER_MAJ}.$${VER_MIN}.$${VER_PAT}
 
 ######################## OS DEPENDENT OPTIONS ########################
 win32 {
+    CONFIG += skip_target_version_ext # no version in lib file
+
     !static : !staticlib {
         CONFIG += dll
         TARGET_EXT = .dll

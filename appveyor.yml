@@ -22,7 +22,6 @@ environment:
     arch: x86
     compiler: msvc
     type: dynamic
-    target: QtCryptoHash.dll
     qt_dir: C:\Qt\%qt_version%\msvc2015\bin
     
   #MSVC x86 STATIC
@@ -30,7 +29,6 @@ environment:
     arch: x86
     compiler: msvc
     type: static
-    target: QtCryptoHash.lib
     qt_dir: C:\Qt\%qt_version%\msvc2015\bin
     
   #MSVC x64
@@ -38,7 +36,6 @@ environment:
     arch: x64
     compiler: msvc
     type: dynamic
-    target: QtCryptoHash64.dll
     qt_dir: C:\Qt\%qt_version%\msvc2015_64\bin
     
   #MSVC x64 STATIC
@@ -46,7 +43,6 @@ environment:
     arch: x64
     compiler: msvc
     type: static
-    target: QtCryptoHash64.lib
     qt_dir: C:\Qt\%qt_version%\msvc2015_64\bin
     
   #MinGW x86
@@ -54,7 +50,6 @@ environment:
     arch: x86
     compiler: mingw
     type: dynamic
-    target: QtCryptoHash.dll
     qt_dir: C:\Qt\%qt_version%\mingw49_32\bin
     
   #MinGW x86 STATIC
@@ -62,7 +57,6 @@ environment:
     arch: x86
     compiler: mingw
     type: static
-    target: libQtCryptoHash.a
     qt_dir: C:\Qt\%qt_version%\mingw49_32\bin
 
 init:
@@ -88,8 +82,15 @@ build_script:
     - cd pkg
     - mkdir bin\%arch%\debug\
     - mkdir bin\%arch%\release\
-    - copy /y ..\bin\%arch%\%type%\debug\%target% bin\%arch%\debug\%target%
-    - copy /y ..\bin\%arch%\%type%\release\%target% bin\%arch%\release\%target%
+    - if [%compiler%]==[msvc] (
+        copy /y ..\bin\%arch%\%type%\debug\*.lib bin\%arch%\debug\
+        copy /y ..\bin\%arch%\%type%\release\*.lib bin\%arch%\release\
+      ) else (
+        copy /y ..\bin\%arch%\%type%\debug\*.a bin\%arch%\debug\
+        copy /y ..\bin\%arch%\%type%\release\*.a bin\%arch%\release\  
+      )
+    - copy /y ..\bin\%arch%\%type%\debug\*.dll bin\%arch%\debug\
+    - copy /y ..\bin\%arch%\%type%\release\*.dll bin\%arch%\release\
     - copy /y ..\lib\include\qcryptohash.hpp qcryptohash.hpp
     - 7z a -t7z QtCryptoHash-v%qtcryptohash_version%-%name%.7z *
     
@@ -102,7 +103,7 @@ test: off
 deploy:
     provider: GitHub
     release: $(APPVEYOR_REPO_TAG_NAME)
-    description: 'Binaries of QtCryptoHash v%qtcryptohash_version%'
+    description: 'Binaries of QtCryptoHash $(APPVEYOR_REPO_TAG_NAME)'
     auth_token:
       secure: 4V5xJQT+iVPUhK05TBLkNkLY8HTArZ+omH394hfXqQuxfrkaQqnR8132rDnB/HVm
     artifact: /.*\.7z/
