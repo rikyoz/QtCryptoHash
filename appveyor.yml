@@ -83,10 +83,10 @@ build_script:
     - mkdir bin\%arch%\debug\
     - mkdir bin\%arch%\release\
     - if [%compiler%]==[msvc] (
-        copy /y ..\bin\%arch%\%type%\debug\*.lib bin\%arch%\debug\
+        copy /y ..\bin\%arch%\%type%\debug\*.lib bin\%arch%\debug\ &
         copy /y ..\bin\%arch%\%type%\release\*.lib bin\%arch%\release\
       ) else (
-        copy /y ..\bin\%arch%\%type%\debug\*.a bin\%arch%\debug\
+        copy /y ..\bin\%arch%\%type%\debug\*.a bin\%arch%\debug\ &
         copy /y ..\bin\%arch%\%type%\release\*.a bin\%arch%\release\  
       )
     - copy /y ..\bin\%arch%\%type%\debug\*.dll bin\%arch%\debug\
