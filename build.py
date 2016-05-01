@@ -10,6 +10,8 @@ def which2(program):
     def is_exe(file_path):
         return os.path.isfile(file_path) and os.access(file_path, os.X_OK)
 
+    if os.name == "nt":
+        program += ".exe"
     fpath, fname = os.path.split(program)
     if fpath:
         if is_exe(program):
@@ -33,10 +35,13 @@ def which(cmd):
 
 def init_args():
     parser = argparse.ArgumentParser(description='Builds QtCryptoHash')
-    parser.add_argument("-c", "--compiler",
-                        choices=["msvc", "mingw"],
-                        default="msvc",
-                        help="compiler to be used (default: msvc)")
+
+    if os.name == "nt":
+        parser.add_argument("-c", "--compiler",
+                            choices=(["msvc", "mingw"]),
+                            default="msvc",
+                            help="compiler to be used (Windows only - default: msvc)")
+
     parser.add_argument("-a", "--arch",
                         choices=["x64", "x86"],
                         default="x64",
@@ -51,27 +56,35 @@ def init_args():
 
 
 def main():
+    tools = {"msvc": "nmake", "mingw": "mingw32-make"}
+    make_cmd = "make"
+
     args = init_args()
     if os.path.isdir("build"):
         shutil.rmtree("build", ignore_errors=True)
 
-    if args.compiler == "msvc" and which("nmake.exe") is None:
-        print("msvc missing from path!")
+    if os.name == "nt":
+        if which(tools[args.compiler]) is None:
+            print("'" + args.compiler + "' not found in path!")
+            return
+
+        make_cmd = tools[args.compiler]
+    elif which(make_cmd) is None:
+        print("'make' not found in path!")
         return
 
-    if args.compiler == "mingw" and which("mingw32-make.exe") is None:
-        print("mingw missing from path!")
-        return
-
-    if which("qmake.exe") is None:
-        print("qt missing from path!")
+    if which("qmake") is None:
+        print("'qt' not found in path!")
         return
 
     build_path = "build/" + args.arch + "/" + ("static" if args.static else "dynamic") + "/"
-    call("qmake" + (" \"CONFIG += static\" " if args.static else " ") + "-o \"" + build_path + "Makefile\"")
+    build_config = ("debug_and_release" if os.name == "posix" else "") + (" static" if args.static else "")
+    build_config = ("\"CONFIG += " + build_config + "\" " if len(build_config) else "")
+    call("qmake " + build_config + "-o \"" + build_path + "Makefile\"", shell=True)
     os.chdir(build_path)
-    call("nmake " + ("debug" if args.debug else "release"))
+    call(make_cmd + " " + ("debug" if args.debug else "release"), shell=True)
 
 
 if __name__ == '__main__':
     main()
+
