@@ -89,8 +89,10 @@ build_script:
         copy /y ..\bin\%arch%\%type%\debug\*.a bin\%arch%\debug\ &
         copy /y ..\bin\%arch%\%type%\release\*.a bin\%arch%\release\  
       )
-    - copy /y ..\bin\%arch%\%type%\debug\*.dll bin\%arch%\debug\
-    - copy /y ..\bin\%arch%\%type%\release\*.dll bin\%arch%\release\
+    - if [%type%]==[dynamic] (
+        copy /y ..\bin\%arch%\%type%\debug\*.dll bin\%arch%\debug\ &
+        copy /y ..\bin\%arch%\%type%\release\*.dll bin\%arch%\release\
+      )
     - copy /y ..\lib\include\qcryptohash.hpp qcryptohash.hpp
     - 7z a -t7z QtCryptoHash-v%qtcryptohash_version%-%name%.7z *
     
